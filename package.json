@@ -1,0 +1,21 @@
+{
+  "name": "wp-migration-assistant",
+  "version": "1.0.1",
+  "description": "Easily clone WP site from GitHub.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wp-migration-assistant"
+  ],
+  "author": "Goran Spasojevic",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "shelljs": "^0.8.5"
+  },
+  "dependencies": {
+    "fs-extra": "^10.1.0"
+  }
+}
