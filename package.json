@@ -2,7 +2,7 @@
   "name": "wp-migration-assistant",
   "version": "1.0.1",
   "description": "Easily clone WP site from GitHub.",
-  "main": "app.js",
+  "main": "assistant.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
