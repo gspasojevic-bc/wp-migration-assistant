@@ -1,7 +1,7 @@
 import {execSync} from 'child_process';
 import fsExtra from 'fs-extra';
+import readline from 'readline';
 
-const GIT_REPO_PATH = 'git@github.com:BetterCollective/wordpress-bettingsidor-se.git';
 const PUBLIC_FOLDER = './public';
 const TEMP_FOLDER = './temp';
 
@@ -19,6 +19,10 @@ const GARBAGE_FILES = [
     'assistant.js'
 ]
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 const moveFiles = (sourceFolderArr, destinationFolder, onlySelectedFiles = []) => {
 
@@ -77,11 +81,22 @@ const cleanUpTempFiles = () => {
     console.log('>>>>>>>> Clean up process is completed.');
 };
 
-const init = () => {
+const assistCloningFrom = (gitPath) => {
     moveFiles(PUBLIC_FOLDER, TEMP_FOLDER);
-    cloneFromGitHub(GIT_REPO_PATH);
+    cloneFromGitHub(gitPath);
     moveFiles(TEMP_FOLDER, PUBLIC_FOLDER, TEMP_ITEMS_TO_RETURN);
-    cleanUpTempFiles();
-}
+    // cleanUpTempFiles();
+};
 
-init();
+
+rl.question('Please enter GitHub repository clone path: ', (gitRepoPath) => {
+    if (!gitRepoPath) {
+        console.log('GitHub repository not entered, exiting...');
+        rl.close();
+        return;
+    }
+
+    assistCloningFrom(gitRepoPath);
+
+    rl.close();
+});
