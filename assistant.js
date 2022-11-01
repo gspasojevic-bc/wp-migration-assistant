@@ -16,8 +16,10 @@ const GARBAGE_FILES = [
     './node_modules',
     'package.json',
     'package-lock.json',
-    'assistant.js'
-]
+    'assistant.js',
+    'assistant.sh',
+    'assistant.zip'
+];
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -85,7 +87,7 @@ const assistCloningFrom = (gitPath) => {
     moveFiles(PUBLIC_FOLDER, TEMP_FOLDER);
     cloneFromGitHub(gitPath);
     moveFiles(TEMP_FOLDER, PUBLIC_FOLDER, TEMP_ITEMS_TO_RETURN);
-    // cleanUpTempFiles();
+    cleanUpTempFiles();
 };
 
 
